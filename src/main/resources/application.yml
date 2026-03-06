@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: INVENTORY-SERVICE
+
+  cloud:
+    function:
+      # Consumer bean names
+      definition: productInventoryConsumer;userDeletedConsumer;orderCancelledConsumer
+
+    stream:
+      bindings:
+
+        # Consumer - listens to product created events
+        productInventoryConsumer-in-0:
+          destination: product-inventory-topic
+          group: inventory-product-group
+          content-type: application/json
+
+        # Consumer - listens when user is deleted
+        userDeleted-in-0:
+          destination: user-deleted-inventory
+          group: inventory-service
+
+        # Consumer - listens when order is cancelled
+        orderCancelled-in-0:
+          destination: order-cancelled
+          group: inventory-service
+
+        # Producer - send low stock alerts
+        lowStockAlert-out-0:
+          destination: low-stock-topic
+          content-type: application/json
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    prefer-ip-address: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventoryService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
