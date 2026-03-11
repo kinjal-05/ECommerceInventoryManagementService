@@ -136,16 +136,22 @@ public class InventoryServiceImpl implements InventoryService {
 
 	@Override
 	public StockResponse addStock(StockRequest request) {
+
 		StockResponse lastResponse = null;
+
 		for (StockRequest.StockItem item : request.getItems()) {
+
 			ProductStock stock = stockRepository.findByProductId(item.getProductId())
-					.orElse(new ProductStock(item.getProductId(), null, 0, 0, null, null));
+					.orElseThrow(() -> new RuntimeException(
+							"Stock not found for productId: " + item.getProductId()));
 
 			stock.setAvailableQuantity(stock.getAvailableQuantity() + item.getQuantity());
-			ProductStock saved = stockRepository.save(stock);
-			lastResponse = mapToResponse(saved);
 
+			ProductStock updatedStock = stockRepository.save(stock);
+
+			lastResponse = mapToResponse(updatedStock);
 		}
+
 		return lastResponse;
 	}
 

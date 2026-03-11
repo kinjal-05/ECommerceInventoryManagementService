@@ -60,7 +60,7 @@ public class InventoryController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping("${api.inventory.add}")
+	@PatchMapping("${api.inventory.add}")
 	public ResponseEntity<StockResponse> addStock(@RequestBody StockRequest request) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(inventoryService.addStock(request));

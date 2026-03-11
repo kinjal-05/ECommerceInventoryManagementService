@@ -1,6 +1,6 @@
 api:
   inventory:
-    base: /api/inventory
+    base: /api/inventory/v1
     check: /check
     reserve: /reserve
     reduce: /reduce

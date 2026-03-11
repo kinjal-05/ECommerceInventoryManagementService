@@ -15,7 +15,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class StockRequest {
-	private Long orderId;
 	private List<StockItem> items;
 
 	@Data
