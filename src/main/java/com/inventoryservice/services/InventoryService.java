@@ -1,10 +1,11 @@
 package com.inventoryservice.services;
+
 import com.inventoryservice.commondtos.StockCheckRequest;
 import com.inventoryservice.commondtos.StockCheckResponse;
 import com.inventoryservice.commondtos.StockRequest;
 import com.inventoryservice.commondtos.StockResponse;
-
 import java.util.List;
+
 public interface InventoryService {
 
 	StockCheckResponse checkStock(StockCheckRequest request);

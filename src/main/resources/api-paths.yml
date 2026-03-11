@@ -1,0 +1,10 @@
+api:
+  inventory:
+    base: /api/inventory
+    check: /check
+    reserve: /reserve
+    reduce: /reduce
+    restore: /restore
+    add: /add
+    get-by-product: /product/{productId}
+    get-all: /all

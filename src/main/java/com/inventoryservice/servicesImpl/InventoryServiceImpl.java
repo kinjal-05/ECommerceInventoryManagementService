@@ -1,8 +1,8 @@
 package com.inventoryservice.servicesImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import com.inventoryservice.commondtos.*;
 import com.inventoryservice.exceptions.ResourceNotFoundException;
 import com.inventoryservice.models.ProductStock;
@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
+
 @Service
 @Transactional
 @RequiredArgsConstructor

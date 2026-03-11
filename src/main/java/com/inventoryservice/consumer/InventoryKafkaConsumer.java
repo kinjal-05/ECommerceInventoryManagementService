@@ -1,11 +1,12 @@
 package com.inventoryservice.consumer;
-import java.util.function.Consumer;
 
+import java.util.function.Consumer;
 import com.inventoryservice.commondtos.ProductEvent1;
 import com.inventoryservice.models.ProductStock;
 import com.inventoryservice.repositories.ProductStockRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 @Configuration
 public class InventoryKafkaConsumer {
 
